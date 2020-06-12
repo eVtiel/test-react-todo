@@ -16,6 +16,7 @@ export default class App extends Component {
       {label: 'Have a lunch', important: false, id: 3}
     ]
   }
+
   maxId = this.state.todoData.length + 1;
 
   deleteItem = (id) => {
@@ -44,6 +45,14 @@ export default class App extends Component {
     })
   }
 
+  onToggleImportant = (id) => {
+    console.log(`important ${id}`);
+  }
+
+  onToggleDone = (id) => {
+    console.log(`Done ${id}`);
+  }
+
   render() {
 
     const {todoData} = this.state;
@@ -57,7 +66,9 @@ export default class App extends Component {
         </div>
 
         <TodoList todos={todoData} 
-        onDeleted={this.deleteItem}/>
+        onDeleted={this.deleteItem}
+        onToggleImportant={this.onToggleImportant}
+        onToggleDone={this.onToggleDone}/>
         <ItemAddForm
         onAdd={this.addItem}/>
       </div>
